@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <link href="../manage/css/normalize.css" rel="stylesheet" type="text/css"/>
+        <!-- Bootstrap V4.3 -->
+        <link rel="stylesheet" href="../manage/css/bootstrap.min.css"/>
+
+        <!-- Bootstrap Material Design V4.0 -->
+
+        <link href="../manage/css/bootstrap-material-design.min.css" rel="stylesheet" type="text/css"/>
+
+
+        <link href="../manage/css/all.css" rel="stylesheet" type="text/css"/>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+        <script src="../manage/js/SweetAlert.js" type="text/javascript"></script>
+
+        <link href="../manage/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css"/>
+
+        <script src="https://kit.fontawesome.com/7769f8ac48.js" crossorigin="anonymous"></script>
+
+        <!-- General Styles -->
+        <link href="../manage/css/dashboard.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <f:view locale="#{idiomaControlador.idiomaSeleccionado}">
+            <script>
+                #{mensajeControlador.mensaje}
+            </script>
+
+            <h:form class="form-neon">
+                <div class="text-center">
+                    <h1><h:outputText value="#{registrar.txt2}"/></h1>
+                </div>
+                <div class="decorador"></div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 col-md-5">
+                            <div class="form-group">       
+                                <h:outputLabel class="bmd-label-floating" value="#{registrar.usu2}" for="tipoDocumento" />
+                                <h:inputText id="tipoDocumento" class="form-control" value="#{usuarioControlador.usuario.tipoDocumento}" title="TipoDocumento" required="true" requiredMessage="Este campo es requerido"/>
+                                <h:message for="tipoDocumento" style="color:red;"></h:message>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-5">
+                            <div class="form-group">
+                                <h:outputLabel class="bmd-label-floating" value="#{registrar.usu3}" for="documento" />
+                                <h:inputText id="documento" class="form-control" value="#{usuarioControlador.documento}" title="Documento" required="true" requiredMessage="Este campo es requerido"/>
+                                <h:message for="documento" style="color:red;"></h:message>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-5">
+                            <div class="form-group">
+                                <h:outputLabel class="bmd-label-floating" value="#{registrar.usu4}" for="nombre" />
+                                <h:inputText id="nombre" class="form-control" value="#{usuarioControlador.usuario.nombre}" title="Nombre" required="true" requiredMessage="Este campo es requerido"/>
+                                <h:message for="nombre" style="color:red;"></h:message>
+
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-5">
+                            <div class="form-group">
+                                <h:outputLabel class="bmd-label-floating" value="#{registrar.usu5}" for="apellido" />
+                                <h:inputText id="apellido" class="form-control" value="#{usuarioControlador.usuario.apellido}" title="Apellido" required="true" requiredMessage="Este campo es requerido"/>
+                                <h:message for="apellido" style="color:red;"></h:message>
+
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-5">
+                            <div class="form-group">
+                                <h:outputLabel class="bmd-label-floating" value="#{registrar.usu6}" for="telefono" />
+                                <h:inputText id="telefono" class="form-control" value="#{usuarioControlador.usuario.telefono}" title="Telefono" required="true" requiredMessage="Este campo es requerido">
+                                <f:validateLength for="telefono" minimum="1" maximum="10"></f:validateLength>
+                                </h:inputText>
+                                <h:message for="telefono" style="color:red;"></h:message>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-5">
+                            <div class="form-group">
+                                <h:outputLabel class="bmd-label-floating" value="#{registrar.usu7}" for="email" />
+                                <h:inputText id="email" class="form-control" value="#{usuarioControlador.usuario.email}" title="Email" required="true" requiredMessage="Este campo es requerido"/>
+                                    
+                                
+                                <h:message for="email" style="color:red;"></h:message>
+
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-5">
+                            <div class="form-group">
+                                <h:outputLabel class="bmd-label-floating" value="#{registrar.usu8}" for="direccion" />
+                                <h:inputText id="direccion" class="form-control" value="#{usuarioControlador.usuario.direccion}" title="Direccion" required="true" requiredMessage="Este campo es requerido"/>
+                                <h:message for="direccion" style="color:red;"></h:message>
+
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-5">
+                            <div class="form-group">
+                                <h:outputLabel class="bmd-label-floating" value="#{registrar.usu9}" for="fechaNacimiento" />
+                                <h:inputText a:type="date" id="fechaNacimiento" class="form-control" value="#{usuarioControlador.usuario.fechaNacimiento}" title="FechaNacimiento" required="true" requiredMessage="Este campo es requerido">
+                                    <f:convertDateTime pattern="yyyy-MM-dd" />
+                                </h:inputText>
+                                <h:message for="fechaNacimiento" style="color:red;"></h:message>
+
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-5">
+                            <div class="form-group">
+                                <h:outputLabel class="bmd-label-floating" value="#{registrar.usu14}" for="fechaIngreso" />
+                                <h:inputText a:type="date" id="fechaIngreso" class="form-control" value="#{usuarioControlador.usuario.fechaIngreso}" title="FechaIngreso" required="true" requiredMessage="Este campo es requerido">
+                                    <f:convertDateTime pattern="yyyy-MM-dd" />
+                                </h:inputText>
+                                <h:message for="fechaIngreso" style="color:red;"></h:message>
+
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-5">
+                            <div class="form-group" >
+                                <h:outputLabel class="bmd-label-floating" value="#{registrar.usu11}" for="password" />
+                                <h:inputText id="password" class="form-control" value="#{usuarioControlador.usuario.password}" title="Password" required="true" requiredMessage="Este campo es requerido"/>
+                                <h:message for="password" style="color:red;"></h:message>
+
+                            </div>
+                        </div>                                
+
+                        <div class="col-12 col-md-5">
+                            <div class="form-group">
+                                <h:outputLabel class="bmd-label-floating " value="#{registrar.usu10}" for="idRol" />
+                                <h:selectOneMenu id="idRol" class="form-control" value="#{usuarioControlador.selectRol}" title="IdRol" required="true" requiredMessage="Este campo es requerido">
+                                    <!-- TODO: update below reference to list of available items-->
+                                    <f:selectItem itemValue="0" itemLabel="Seleccione" noSelectionOption="true"></f:selectItem>
+                                    <f:selectItems value="#{rolControlador.consultarTodos()}" var="tipo" itemValue="#{tipo.idRol}" itemLabel="#{tipo.nombre}"/>
+                                </h:selectOneMenu>
+                                <h:message for="idRol" style="color:red;"></h:message>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-5 Oculto" id="contpasp">
+                            <div class="form-group">
+                                <h:outputLabel class="bmd-label-floating" value="Pasaporte" for="Passport"/>
+                                <h:inputText class="form-control" id="Passport" value="#{usuarioControlador.pasaporte}" />
+                                <h:message for="Passport" style="color:red;"></h:message>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn">
+                        <h:commandButton class="btn btn-raised btn-info btn-sm" value="#{registrar.txt2}" action="#{usuarioControlador.registrar()}"></h:commandButton>
+                    </div>
+                </div>
+
+
+
+
+            </h:form>
+
+        </f:view>
+        <script src="../manage/js/jquery-3.4.1.min.js" type="text/javascript"></script>
+
+        <script src="../manage/js/popper.min.js" type="text/javascript"></script>
+
+        <script src="../manage/js/bootstrap.min.js" type="text/javascript"></script>
+
+        <script src="../manage/js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript"></script>
+
+        <script src="../manage/js/bootstrap-material-design.min.js" type="text/javascript"></script>
+
+        <script>$(document).ready(function () {
+                    $('body').bootstrapMaterialDesign();
+                });</script>
+        <script>
+            var selectRol = document.getElementById("j_idt6:idRol"),
+                    pasaporte = document.getElementById("contpasp");
+            selectRol.addEventListener('change', function () {
+                if (selectRol.value === '2') {
+                    pasaporte.classList.remove("Oculto");
+
+                } else {
+                    pasaporte.classList.add("Oculto");
+
+                }
+            });
+        </script>
+        <script src="../manage/js/main.js" type="text/javascript"></script>
+    </h:body>
+</html>
+

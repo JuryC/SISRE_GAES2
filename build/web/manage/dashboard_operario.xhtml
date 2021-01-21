@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <f:view>
+        <h:head>
+
+            <meta charset="UTF-8"></meta>
+            <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"></meta>
+            <title>Dashboard Cliente</title>
+
+            <!-- Bootstrap V4.3 -->
+            <link rel="stylesheet" href="css/bootstrap.min.css"/>
+
+            <!-- Bootstrap Material Design V4.0 -->
+
+            <link href="css/bootstrap-material-design.min.css" rel="stylesheet" type="text/css"/>
+
+
+
+
+            <!-- General Styles -->
+            <link href="css/dashboard.css" rel="stylesheet" type="text/css"/>
+        </h:head>
+        <h:body>
+
+            <header>
+                <div class="navbar" >
+                    <div class="navbar-content" id="menu-nav">
+                        <ion-icon name="menu" id="menu-btn"></ion-icon>
+                        <!--<img src="logo-sistema" alt=""></img>-->
+                        <div class="controler-sesion">
+                            <a href=""><ion-icon name="create"></ion-icon></a>
+                            <a href=""><ion-icon name="exit"></ion-icon></a>
+                        </div>
+                    </div>
+                </div>
+
+            </header>
+            <h:form>
+                <div id="sidebar-container" class="bd-primary">
+                    <div class="user-data">
+                        <img src="#{sesionControlador.usuario.avatar}" alt="" class="circle-user"></img>
+                        <span class="Name">#{sesionControlador.usuario.nombre}</span>
+                        <span class="Name">#{sesionControlador.usuario.apellido}</span>
+                        <span class="Role">#{sesionControlador.rolSeleccionado.nombre}</span>
+                    </div>
+                    <div class="menu-content">
+
+                        <c:forEach items="#{sesionControlador.rolSeleccionado.rolpermisoList}" var="p">
+                            <li>
+                                <c:if test="#{empty p.idPermiso.permisoPadre}">
+                                    <a href="#{p.idPermiso.url}">
+                                        #{p.idPermiso.nombre}
+                                    </a>
+                                    <ul>
+                                        <c:forEach items="#{sesionControlador.hijos(p.idPermiso.idPermiso)}" var="sp">
+                                            <c:forEach items="#{sesionControlador.rolSeleccionado.rolpermisoList}" var="op">
+                                                <c:if test="#{sp.idPermiso eq op.idPermiso.idPermiso}">
+                                                    <li>
+                                                        <a href="#{sp.url}" target="Work">
+                                                            #{sp.nombre}
+                                                        </a>
+                                                    </li>
+                                                </c:if>
+                                            </c:forEach>
+                                        </c:forEach>
+                                    </ul>
+                                </c:if>
+                            </li>
+                        </c:forEach>
+
+
+                    </div>
+                </div>
+            </h:form>
+            <main id="contenido">
+                <!--<iframe src="index.html" frameborder="0" name="Work"></iframe>-->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="img_avatar.png" alt="Avatar" style="width:300px;height:300px;">
+                        </div>
+                        <div class="flip-card-back">
+                            <h1>JOSE CEDIEL</h1>
+                            <p>OPERARIO</p>
+                            <p>PARA MULTIMUDANZAS ES IMPORTANTE TENER EMPLEADOS COMO TU</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!--=============================================
+            =            Include JavaScript files           =
+            ==============================================-->
+            <script src="../manage/js/dash.js" type="text/javascript"></script>
+            <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+
+        </h:body>
+    </f:view>
+</html>
+

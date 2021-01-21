@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link href="../manage/css/normalize.css" rel="stylesheet" type="text/css"/>
+        <!-- Bootstrap V4.3 -->
+        <link rel="stylesheet" href="../manage/css/bootstrap.min.css"/>
+
+        <!-- Bootstrap Material Design V4.0 -->
+
+        <link href="../manage/css/bootstrap-material-design.min.css" rel="stylesheet" type="text/css"/>
+
+
+        <link href="../manage/css/all.css" rel="stylesheet" type="text/css"/>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+        <script src="../manage/js/SweetAlert.js" type="text/javascript"></script>
+
+        <link href="../manage/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css"/>
+
+        <script src="https://kit.fontawesome.com/7769f8ac48.js" crossorigin="anonymous"></script>
+
+        <!-- General Styles -->
+        <link href="../manage/css/dash.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <f:view>
+            <script>
+                #{mensajeControlador.mensaje}
+            </script>
+
+
+
+
+
+            <script>
+                #{mensajeControlador.mensaje}
+            </script>
+            <h:form class="form-neon">
+                <div class="contenedorEje scrollbarStyle">
+                    <div class="text-center">
+                        <h1><h:outputText value="#{registrarSolicitud.txt}"/></h1>
+                    </div>
+                    <div class="decorador"></div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-md-5">
+                                <div class="form-group">
+                                    <h:outputLabel class="bmd-label-floating" value="IdServicio:" for="idServicio" />
+                                    <h:inputText class="form-control" id="idServicio" value="#{servicioControlador.servicio.idServicio}" title="IdServicio" required="true" requiredMessage="The IdServicio field is required."/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="form-group">
+                                    <h:outputLabel class="bmd-label-floating" value="EstadoServicio:" for="estadoServicio" />
+                                    <h:inputText class="form-control" id="estadoServicio" value="#{servicioControlador.servicio.estadoServicio}" title="EstadoServicio" required="true" requiredMessage="The EstadoServicio field is required."/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="form-group">
+                                    <h:outputLabel  class="bmd-label-floating" value="Estado:" for="estado" />
+                                    <h:inputText class="form-control" id="estado" value="#{servicioControlador.servicio.estado}" title="Estado" required="true" requiredMessage="The Estado field is required."/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="form-group">
+                                    <h:outputLabel class="bmd-label-floating" value="Total:" for="total" />
+                                    <h:inputText class="form-control" id="total" value="#{servicioControlador.servicio.total}" title="Total" required="true" requiredMessage="The Total field is required."/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="form-group">
+                                    <h:outputLabel class="bmd-label-floating" value="TipoServicio:" for="tipoServicio" />
+                                    <h:selectOneMenu class="form-control" id="tipoServicio" value="#{servicioControlador.tiposervicio.idTipoServicio}" title="TipoServicio" required="true" requiredMessage="The TipoServicio field is required.">
+                                        <!-- TODO: update below reference to list of available items-->
+                                        <f:selectItem itemValue="0" itemLabel="Seleccione" noSelectionOption="true"></f:selectItem>
+                                        <f:selectItems value="#{tipoServicioControlador.consultarTodos()}" var="tipo" itemValue="#{tipo.idTipoServicio}" itemLabel="#{tipo.nombre}"/>
+                                    </h:selectOneMenu>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="form-group">
+                                    <h:outputLabel class="bmd-label-floating" value="IdCita:" for="idCita" />
+                                    <h:selectOneMenu class="form-control" id="idCita" value="#{servicioControlador.cita.idCita}" title="IdCita" required="true" requiredMessage="The IdCita field is required.">
+                                        <!-- TODO: update below reference to list of available items-->
+                                        <f:selectItem itemValue="0" itemLabel="Seleccione" noSelectionOption="true"></f:selectItem>
+                                        <f:selectItems value="#{citaControlador.consultarTodos()}" var="tipo" itemValue="#{tipo.idCita}" itemLabel="#{tipo.fechaCita}"/>
+                                    </h:selectOneMenu>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="form-group">
+                                    <h:outputLabel class="bmd-label-floating" value="IdEnvio:" for="idEnvio" />
+                                    <h:selectOneMenu class="form-control" id="idEnvio" value="#{servicioControlador.envio.idEnvio}" title="IdEnvio" required="true" requiredMessage="The IdEnvio field is required.">
+                                        <!-- TODO: update below reference to list of available items-->
+                                        <f:selectItem itemValue="0" itemLabel="Seleccione" noSelectionOption="true"></f:selectItem>
+                                        <f:selectItems value="#{envioControlador.consultarTodos()}" var="tipo" itemValue="#{tipo.idEnvio}" itemLabel="#{tipo.tipoEnvio}"/>
+                                    </h:selectOneMenu>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="form-group">
+                                    <h:outputLabel class="bmd-label-floating" value="IdTransporte:" for="idTransporte" />
+                                    <h:selectOneMenu class="form-control" id="idTransporte" value="#{servicioControlador.transporte.idTransporte}" title="IdTransporte" >
+                                        <!-- TODO: update below reference to list of available items-->
+                                        <f:selectItem itemValue="0" itemLabel="Seleccione" noSelectionOption="true"></f:selectItem>
+                                        <f:selectItems value="#{tipoTransporteControlador.consultarTodos()}" var="tipo" itemValue="#{tipo.idTipoTransporte}" itemLabel="#{tipo.nombre}"/>
+                                    </h:selectOneMenu>
+                                </div>
+                            </div>
+                        </div>
+                        <h:commandButton class="btn btn-raised btn-info btn-sm" value="Registrar Servicio" action="#{servicioControlador.registrar()}"></h:commandButton>
+                    </div>
+                </div>
+            </h:form>
+
+
+
+        </f:view>
+        <script src="../manage/vendor/jquery/jquery.min.js" type="text/javascript"></script>
+
+        <script src="../manage/vendor/jquery/popper.min.js" type="text/javascript"></script>
+
+        <script src="../manage/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/datatables.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/dataTables.buttons.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/jszip.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/pdfmake.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/vfs_fonts.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/buttons.html5.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/exportar_tablas.js" type="text/javascript"></script>
+    </h:body>
+</html>
+

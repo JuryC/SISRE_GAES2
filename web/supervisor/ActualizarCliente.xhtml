@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link href="../manage/css/normalize.css" rel="stylesheet" type="text/css"/>
+        <!-- Bootstrap V4.3 -->
+        <link rel="stylesheet" href="../manage/css/bootstrap.min.css"/>
+
+        <!-- Bootstrap Material Design V4.0 -->
+
+        <link href="../manage/css/bootstrap-material-design.min.css" rel="stylesheet" type="text/css"/>
+
+
+        <link href="../manage/css/all.css" rel="stylesheet" type="text/css"/>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        
+        <script src="../manage/js/SweetAlert.js" type="text/javascript"></script>
+
+        <link href="../manage/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css"/>
+
+        <script src="https://kit.fontawesome.com/7769f8ac48.js" crossorigin="anonymous"></script>
+
+        <!-- General Styles -->
+        <link href="../manage/css/dash.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <f:view>
+            <script>
+                #{mensajeControlador.mensaje}
+            </script>
+            <main id="contenido">
+                <h:form class="form-neon">
+                    <div class="text-center">
+                        <h1><h:outputText value="Registrar"/></h1>
+                    </div>
+                    <div class="decorador"></div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-md-5">
+                                <div class="form-group">
+                                    <h:outputLabel class="bmd-label-floating" value="IdCliente:" for="idCliente" />
+                                    <h:inputText class="form-control" id="idCliente" value="#{clienteControlador.cliente.idCliente}" title="IdCliente" required="true" requiredMessage="The IdCliente field is required."/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="form-group">
+                                    <h:outputLabel class="bmd-label-floating" value="TipoDocumento:" for="tipoDocumento" />
+                                    <h:inputText class="form-control" id="tipoDocumento" value="#{clienteControlador.cliente.tipoDocumento}" title="TipoDocumento" required="true" requiredMessage="The TipoDocumento field is required."/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="form-group">
+                                    <h:outputLabel class="bmd-label-floating" value="Documento:" for="documento" />
+                                    <h:inputText class="form-control" id="documento" value="#{clienteControlador.cliente.documento}" title="Documento" required="true" requiredMessage="The Documento field is required."/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="form-group">
+                                    <h:outputLabel class="bmd-label-floating" value="Nombre:" for="nombre" />
+                                    <h:inputText class="form-control" id="nombre" value="#{clienteControlador.cliente.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required."/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="form-group">
+                                    <h:outputLabel class="bmd-label-floating" value="Apellido:" for="apellido" />
+                                    <h:inputText class="form-control" id="apellido" value="#{clienteControlador.cliente.apellido}" title="Apellido" required="true" requiredMessage="The Apellido field is required."/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="form-group">
+                            <h:outputLabel class="bmd-label-floating" value="Telefono:" for="telefono" />
+                            <h:inputText class="form-control" id="telefono" value="#{clienteControlador.cliente.telefono}" title="Telefono" required="true" requiredMessage="The Telefono field is required."/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="form-group">
+                                    <h:outputLabel class="bmd-label-floating" value="Direccion:" for="direccion" />
+                                    <h:inputText class="form-control" id="direccion" value="#{clienteControlador.cliente.direccion}" title="Direccion" required="true" requiredMessage="The Direccion field is required."/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="form-group">
+                                    <h:outputLabel class="bmd-label-floating" value="Email:" for="email" />
+                                    <h:inputText class="form-control" id="email" value="#{clienteControlador.cliente.email}" title="Email" required="true" requiredMessage="The Email field is required."/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="form-group">
+                                    <h:outputLabel class="bmd-label-floating" value="Password:" for="password" />
+                                    <h:inputText class="form-control" id="password" value="#{clienteControlador.cliente.password}" title="Password" required="true" requiredMessage="The Password field is required."/>
+                                </div>
+                            </div>
+                                    <div class="col-12 col-md-5">
+                                        <div class="form-group">
+                                            <h:outputLabel class="bmd-label-floating" value="FechaNacimiento:" for="fechaNacimiento" />
+                                            <h:inputText class="form-control" id="fechaNacimiento" value="#{clienteControlador.cliente.fechaNacimiento}" title="FechaNacimiento" required="true" requiredMessage="The FechaNacimiento field is required.">
+                                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                            </h:inputText>
+                                        </div>
+                                    </div>
+                            <div class="col-12 col-md-5">
+                                        <div class="form-group">
+                                    <h:outputLabel class="bmd-label-floating" value="Pasaporte:" for="pasaporte" />
+                                    <h:inputText class="form-control" id="pasaporte" value="#{clienteControlador.cliente.pasaporte}" title="Pasaporte" required="true" requiredMessage="The Pasaporte field is required."/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="form-group">
+                                    <h:outputLabel class="bmd-label-floating" value="Estado:" for="estado" />
+                                    <h:inputText class="form-control" id="estado" value="#{clienteControlador.cliente.estado}" title="Estado" required="true" requiredMessage="The Estado field is required."/>
+                                </div>
+                            </div>
+                        </div>
+                        <h:commandButton class="btn btn-raised btn-info btn-sm" value="actualizar" action="#{clienteControlador.actualizar()}"></h:commandButton>
+                    </div>
+                </h:form>
+            </main>
+        </f:view>
+
+    </h:body>
+</html>
+

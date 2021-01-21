@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"></meta>
+        <title>Dashboard Supervisor</title>
+
+        <link href="../manage/css/normalize.css" rel="stylesheet" type="text/css"/>
+        <!-- Bootstrap V4.3 -->
+        <link rel="stylesheet" href="../manage/css/bootstrap.min.css"/>
+
+        <!-- Bootstrap Material Design V4.0 -->
+
+        <link href="../manage/css/bootstrap-material-design.min.css" rel="stylesheet" type="text/css"/>
+
+
+        <link href="../manage/css/all.css" rel="stylesheet" type="text/css"/>
+
+        <link href="../manage/css/sweetalert2.min.css" rel="stylesheet" type="text/css"/>
+
+        <script src="../manage/js/sweetalert2.min.js" type="text/javascript"></script>
+
+        <link href="../manage/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css"/>
+
+        <script src="https://kit.fontawesome.com/7769f8ac48.js" crossorigin="anonymous"></script>
+
+        <!-- General Styles -->
+        <link href="../manage/css/dash.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <f:view>
+            <main id="contenido">
+                <h:form class="form-neon">
+                    <div class="text-center">
+                        <h1><h:outputText value="Registrar"/></h1>
+                    </div>
+                    <div class="decorador"></div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-md-2">
+                                <div class="form-group">
+                                    <h:outputLabel class="bmd-label-floating" value="IdTipoTransporte:" for="idTipoTransporte" />
+                                    <h:inputText class="form-control" id="idTipoTransporte" value="#{tipoTransporteControlador.tipotransporte.idTipoTransporte}" title="IdTipoTransporte" required="true" requiredMessage="The IdTipoTransporte field is required."/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-2">
+                                <div class="form-group">
+                                    <h:outputLabel class="bmd-label-floating" value="Nombre:" for="nombre" />
+                                    <h:inputText class="form-control" id="nombre" value="#{tipoTransporteControlador.tipotransporte.nombre}" title="Nombre" required="true" requiredMessage="The Nombre field is required."/>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-2">
+                                <div class="form-group">
+                                    <h:outputLabel class="bmd-label-floating" value="Estado:" for="estado" />
+                                    <h:inputText class="form-control" id="estado" value="#{tipoTransporteControlador.tipotransporte.estado}" title="Estado" required="true" requiredMessage="The Estado field is required."/>
+                                </div>
+                            </div>
+                            
+                            </div>
+                        <div class="btn">
+                            <h:commandButton class="btn btn-raised btn-info btn-sm" value="Registrar" action="#{tipoTransporteControlador.registrar()}"></h:commandButton>
+                            </div>
+                    </div>
+
+                </h:form>
+            </main>
+            
+            <script src="../manage/js/jquery-3.4.1.min.js" type="text/javascript"></script>
+
+            <script src="../manage/js/popper.min.js" type="text/javascript"></script>
+
+            <script src="../manage/js/bootstrap.min.js" type="text/javascript"></script>
+
+            <script src="../manage/js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript"></script>
+
+            <script src="../manage/js/bootstrap-material-design.min.js" type="text/javascript"></script>
+
+            <script>$(document).ready(function () {
+                    $('body').bootstrapMaterialDesign();
+                });</script>
+
+            <script src="../manage/js/main.js" type="text/javascript"></script>
+        </f:view>
+
+    </h:body>
+</html>
+

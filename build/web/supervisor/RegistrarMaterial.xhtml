@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <link href="../manage/css/normalize.css" rel="stylesheet" type="text/css"/>
+        <!-- Bootstrap V4.3 -->
+        <link rel="stylesheet" href="../manage/css/bootstrap.min.css"/>
+
+        <!-- Bootstrap Material Design V4.0 -->
+
+        <link href="../manage/css/bootstrap-material-design.min.css" rel="stylesheet" type="text/css"/>
+
+
+        <link href="../manage/css/all.css" rel="stylesheet" type="text/css"/>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+        <script src="../manage/js/SweetAlert.js" type="text/javascript"></script>
+
+        <link href="../manage/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css"/>
+
+        <script src="https://kit.fontawesome.com/7769f8ac48.js" crossorigin="anonymous"></script>
+
+        <!-- General Styles -->
+        <link href="../manage/css/dashboard.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <f:view>
+            <script>
+                #{mensajeControlador.mensaje}
+            </script>
+           
+                <h:form class="form-neon">
+                    <div class="contenedorEje scrollbarStyle">
+                        <div class="text-center">
+                            <h1><h:outputText value="Registrar material"/></h1>
+                        </div><div class="decorador"></div>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12 col-md-3">
+                                    <div class="form-group">
+                                        <h:outputLabel class="bmd-label-floating" escape="false" value="&lt;b&gt;Registrado por:&lt;/b&gt;" for="idUsuario" />
+                                        <h:selectOneMenu class="form-control" id="idUsuario" value="#{materialControlador.usuario.idUsuario}" title="IdUsuario" required="true" requiredMessage="The IdUsuario field is required.">
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItems value="#{usuarioControlador.obtenerUsuario(sesionControlador.usuario.idUsuario)}" var="tipo" itemValue="#{tipo.idUsuario}" itemLabel="#{tipo.nombre} #{tipo.apellido}"/>
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <div class="form-group">
+                                        <h:outputLabel class="bmd-label-floating" escape="false" value="&lt;b&gt;Buscar existencias&lt;/b&gt;" for="busqueda" />
+                                        <h:inputText class="form-control" value="#{materialControlador.nombreMaterial}" id="busqueda">
+                                            <f:ajax event="keyup" listener="#{materialControlador.changeListMaterial}" render="materiales"></f:ajax>
+                                        </h:inputText><br/>
+                                        <h:outputLabel class="bmd-label-floating" escape="false" value="&lt;b&gt;Materiales existentes&lt;/b&gt;" for="materiales" />
+                                        <h:selectOneMenu class="form-control prueba" id="materiales" value="#{materialControlador.materialId}" title="Material">
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItem itemValue="0" itemLabel="Seleccione" noSelectionOption="true"></f:selectItem>
+                                            <f:selectItems value="#{materialControlador.listByMaterial}" var="tip" itemValue="#{tip.idMaterial}" itemLabel="#{tip.nombre} - $#{inventarioControlador.obtenerValor(tip.idMaterial)} - #{tip.descripcion}"/>
+                                            <f:ajax event="change" listener="#{materialControlador.rellenar}" render="nombre descripcion valor idTipoMaterial"></f:ajax>
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                                <p class="col-12 col-md-12">En caso de que exista el material, por favor ingresar solamente la <b>cantidad que ingresa</b>, y si desea actualizar el valor unitario también digitarlo</p>
+                                <div id="NotSelect" class="row col-12 col-md-12">
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <h:outputLabel class="bmd-label-floating" escape="false" value="&lt;b&gt;Nombre&lt;/b&gt;" for="nombre" />
+                                            <h:inputText class="form-control" id="nombre" value="#{materialControlador.nombre}" title="Nombre"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <h:outputLabel class="bmd-label-floating" escape="false" value="&lt;b&gt;Descripción&lt;/b&gt;" for="descripcion" />
+                                            <h:inputText class="form-control" id="descripcion" value="#{materialControlador.material.descripcion}" title="Descripcion"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <h:outputLabel class="bmd-label-floating" escape="false" value="&lt;b&gt;Tipo de material&lt;/b&gt;" for="idTipoMaterial" />
+                                            <h:selectOneMenu class="form-control" id="idTipoMaterial" value="#{materialControlador.tipomaterial.idTipoMaterial}" title="IdTipoMaterial" >
+                                                <!-- TODO: update below reference to list of available items-->
+                                                <f:selectItems value="#{tipoMaterialControlador.consultarTodos()}" var="ti" itemValue="#{ti.idTipoMaterial}" itemLabel="#{ti.nombre}"/>
+                                            </h:selectOneMenu>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <h:outputLabel class="bmd-label-floating" escape="false" value="&lt;b&gt;Valor unitario&lt;/b&gt;" for="valor" />
+                                            <h:inputText a:placeholder="$" class="form-control solo-numero" id="valor" value="#{materialControlador.valor}" title="Valor"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="form-group">
+                                            <h:outputLabel class="bmd-label-floating" escape="false" value="&lt;b&gt;Cantidad que ingresa&lt;/b&gt;" for="unidades" />
+                                            <h:inputText a:placeholder="Unidades" class="form-control solo-numero" id="unidades" value="#{materialControlador.cantidad}" title="Valor" required="true" requiredMessage="The Descripcion field is required."/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h:commandButton class="btn btn-raised btn-info btn-sm" value="Registrar material" action="#{materialControlador.registrar()}"></h:commandButton>
+                    </div>
+                </h:form>
+            
+        </f:view>
+        <script src="../manage/js/jquery.min.js" type="text/javascript"></script>
+        <script src="../manage/js/jquery.numeric.js" type="text/javascript"></script>
+        <script type="text/javascript">
+                $(document).ready(function () {
+                    $('.solo-numero').numeric();
+                });
+        </script>
+        <!-- Prueba para hacer más interactivo el formulario 
+                <script>
+                    var material = document.getElementById("j_idt6:materiales");
+                    var registerForm = document.getElementById("NotSelect");
+        
+                    material.addEventListener('change', function() {
+                        if (material.value === "0") {
+                            registerForm.classList.remove("Oculto");
+                        } else {
+                            registerForm.classList.add("Oculto");
+                        }
+                    });
+                </script> -->
+    </h:body>
+</html>
+

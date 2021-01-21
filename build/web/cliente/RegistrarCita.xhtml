@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"></meta>
+
+
+        <link href="../manage/css/normalize.css" rel="stylesheet" type="text/css"/>
+        <!-- Bootstrap V4.3 -->
+        <link rel="stylesheet" href="../manage/css/bootstrap.min.css"/>
+
+        <!-- Bootstrap Material Design V4.0 -->
+
+        <link href="../manage/css/bootstrap-material-design.min.css" rel="stylesheet" type="text/css"/>
+
+
+        <link href="../manage/css/all.css" rel="stylesheet" type="text/css"/>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+        <script src="../manage/js/SweetAlert.js" type="text/javascript"></script>
+
+        <link href="../manage/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css"/>
+
+        <script src="https://kit.fontawesome.com/7769f8ac48.js" crossorigin="anonymous"></script>
+
+        <!-- General Styles -->
+        <link href="../manage/css/dashboard.css" rel="stylesheet" type="text/css"/>
+        
+        <title>Registrar cita</title>
+    </h:head>
+    <h:body>
+        <f:view locale="#{idiomaControlador.idiomaSeleccionado}">
+            <script>
+                #{mensajeControlador.mensaje}
+            </script>
+                <h:form class="form-neon">
+                    <div class="text-center">
+                        <h1><h:outputText value="#{registrar.txt}"/></h1>
+                    </div>
+                    <div class="decorador"></div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-md-5">
+                                <div class="form-group">
+                                    <h:outputLabel class="bmd-label-floating" value="#{registrar.hdr27}" for="cliente" />
+                                    <h:selectOneMenu class="form-control" value="#{citaControlador.idCliente}" id="cliente" required="true">
+                                        <f:selectItems value="#{usuarioControlador.obtenerUsuario(sesionControlador.usuario.idUsuario)}" var="us" itemLabel="#{us.nombre} #{us.apellido}" itemValue="#{us.idUsuario}"></f:selectItems>
+                                    </h:selectOneMenu>
+                                    <h:message for="cliente" style="color:red;"></h:message>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="form-group">
+                                    <h:outputLabel class="bmd-label-floating" value="#{registrar.hdr1}" for="fechaCita" />
+                                    <h:inputText a:type="date" class="form-control" id="fechaCita" a:min="#{citaControlador.nowFormat()}" value="#{citaControlador.cita.fechaCita}" title="FechaCita" required="true" requiredMessage="Este campo es requerido">
+                                        <f:convertDateTime pattern="yyyy-MM-dd" />
+                                    </h:inputText>
+                                    <h:message for="fechaCita" style="color:red;">
+                                    </h:message>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="form-group">
+                                    <h:outputLabel class="bmd-label-floating" value="#{registrar.hdr26}" for="origen" />
+                                    <h:inputText  class="form-control" id="origen" value="#{citaControlador.cita.origen}" title="Dirección de Origen" required="true" requiredMessage="Este campo es requerido"></h:inputText>
+                               <h:message for="origen" style="color:red;"></h:message>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="form-group">
+                                    <h:outputLabel class="bmd-label-floating" value="#{registrar.hdr28}" for="destino" />
+                                    <h:inputText class="form-control" id="destino" value="#{citaControlador.cita.destino}" title="Dirección de Destino" required="true" requiredMessage="Este campo es requerido"></h:inputText>
+                               <h:message for="destino" style="color:red;"></h:message>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="form-group">  
+                                    <h:outputLabel class="bmd-label-floating" value="#{registrar.hdr2}" for="horaCita" />
+                                    <h:inputText a:type="time" class="form-control" id="horaCita" value="#{citaControlador.cita.horaCita}" title="HoraCita" required="true" requiredMessage="Este campo es requerido">
+                                        <f:convertDateTime pattern="HH:mm" />
+                                    </h:inputText>
+                                <h:message for="horaCita" style="color:red;"></h:message>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5">
+                                <div class="form-group">  
+                                    <h:outputLabel class="bmd-label-floating" value="#{registrar.hdr3}" for="descrip" />
+                                    <h:inputTextarea class="form-control" value="#{citaControlador.cita.descripcion}" id="descrip" required="true" a:placeholder="#{registrar.hdr29}" requiredMessage="Este campo es requerido"></h:inputTextarea>
+                                <h:message for="descrip" style="color:red;"></h:message>
+                                </div>
+                            </div>
+                        </div>
+                        <h:commandButton class="btn btn-raised btn-info btn-sm" value="#{registrar.txt}" action="#{citaControlador.registrar()}"></h:commandButton>
+                    </div>
+                </h:form>
+            
+        </f:view>
+        <script src="../manage/vendor/jquery/jquery.min.js" type="text/javascript"></script>
+
+        <script src="../manage/vendor/jquery/popper.min.js" type="text/javascript"></script>
+
+        <script src="../manage/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/datatables.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/dataTables.buttons.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/jszip.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/pdfmake.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/vfs_fonts.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/buttons.html5.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/exportar_tablas.js" type="text/javascript"></script>
+    </h:body>
+</html>
+

@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <!-- Bootstrap V4.3 -->
+        <link rel="stylesheet" href="../manage/css/bootstrap.min.css"/>
+
+        <!-- Bootstrap Material Design V4.0 -->
+
+        <link href="../manage/css/bootstrap-material-design.min.css" rel="stylesheet" type="text/css"/>
+
+
+        <link href="../manage/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+
+        <link href="../manage/dataTables/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+        <script src="https://kit.fontawesome.com/7769f8ac48.js" crossorigin="anonymous"></script>
+
+        <!-- General Styles -->
+        <link href="../manage/css/dashboard.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <div class="contenedorEje scrollbarStyle">
+                    <div class="text-center">
+                        <h1><h:outputText value="Enviar Correos"/></h1>
+                    </div>
+                    <div class="decorador"></div>
+                    <div class="form-group">
+                        <h:outputLabel class="bmd-label-floating" value="Asunto"></h:outputLabel>
+                        <h:inputText class="form-control" value="#{correoControlador.asunto}" ></h:inputText>
+                    </div>
+                     <div class="form-group">
+                    <h:outputLabel class="bmd-label-floating" value="Cuerpo"></h:outputLabel>
+                    <h:inputTextarea class="form-control" value="#{correoControlador.cuerpo}"></h:inputTextarea>
+                     </div>
+                    <h:commandButton class="btn btn-raised btn-info btn-sm" action="#{correoControlador.notificarTodos()}" value="Enviar Correo"></h:commandButton>
+                </div>
+            </h:form>
+
+        </f:view>
+    </h:body>
+</html>
+

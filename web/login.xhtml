@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"></meta>
+        <title>Inicio Sesión</title>
+        <link href="manage/css/login1.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <f:view>
+            <div class="login-wrap">
+                <div class="login-html">
+                    <input id="tab-1" type="radio" checked="true"  name="tab" class="sign-in"/><label for="tab-1" class="tab">#{inicio.tab1}</label>
+                    <input id="tab-2" type="radio" name="tab" class="sign-up"/><label for="tab-2" class="tab">#{inicio.tab2}</label>
+                    <div class="login-form">
+                        <div class="sign-in-htm">
+                            <h:form>
+                                <div class="group">
+                                    <label for="user" class="label">#{inicio.label1}</label>
+                                    <h:inputText class="input" id="documento" value="#{sesionControlador.documento}" title="Documento" required="true" requiredMessage="El documento es requerido"/>
+                                    <h:message for="documento" style="color:red;">
+                                    </h:message>
+                                </div>
+                                <div class="group">
+                                    <label for="pass" class="label">#{inicio.label2}</label>
+                                    <h:inputSecret class="input" id="password" value="#{sesionControlador.clave}" title="Password" required="true" requiredMessage="La contraseña es requerida"/>
+                                    <h:message for="password" style="color:red;">
+                                    </h:message>
+                                </div>
+                                <div class="group">
+                                    <input id="check" type="checkbox" class="check"/>
+                                    <label for="check"><span class="icon"></span>#{inicio.check}</label>
+                                </div>
+                                <div class="group">
+                                    <h:commandButton class="button" value="#{inicio.button}" action="#{sesionControlador.loginUser()}" ></h:commandButton>
+                                </div>
+                            </h:form>
+                            <div class="hr"></div>
+                            <div class="foot-lnk">
+                                <a href="#forgot">#{inicio.foot}</a>
+                            </div>
+                            <h:form>
+                                <c:if test="#{idiomaControlador.idiomaSeleccionado == idiomaControlador.espanol}">
+                                    <h:commandLink action="#{idiomaControlador.cambiarIdioma('en')}">
+                                        <img src="manage/assets/img/icon.png" style="width: 30px; height: 30px;"/>
+                                    </h:commandLink>
+                                </c:if>
+                                <c:if test="#{idiomaControlador.idiomaSeleccionado == idiomaControlador.ingles}">
+                                    <h:commandLink action="#{idiomaControlador.cambiarIdioma('es')}">
+                                        <img src="manage/assets/img/icon_es.png" style="width: 30px; height: 30px;"/>
+                                    </h:commandLink>
+                                </c:if>
+                            </h:form>
+                        </div>
+                        <div class="sign-up-htm">
+                            <h:form>
+                                <div class="group">
+                                    <label for="user" class="label">#{inicio.label3}</label>
+                                    <h:inputText class="input" id="documento" title="Documento" required="true" requiredMessage="The Documento field is required."/>
+                                </div>
+                                <div class="group">
+                                    <label for="pass" class="label">#{inicio.label2}</label>
+                                    <input id="pass" type="password" class="input" data-type="password"/>
+                                </div>
+                                <div class="group">
+                                    <label for="email" class="label">#{inicio.label5}</label>
+                                    <input id="pass" type="text" class="input"/>
+                                </div>
+                                <div class="group">
+                                    <input type="submit" class="button" value="#{inicio.button2}"/>
+                                </div>
+                            </h:form>
+                            <div class="hr"></div>
+                            <div class="foot-lnk">
+                                <label for="tab-1">#{inicio.foot2}</label>
+                            </div>
+                            <h:form>
+                                <c:if test="#{idiomaControlador.idiomaSeleccionado == idiomaControlador.espanol}">
+                                    <h:commandLink action="#{idiomaControlador.cambiarIdioma('en')}">
+                                        <img src="manage/assets/img/icon.png" style="width: 30px; height: 30px;"/>
+                                    </h:commandLink>
+                                </c:if>
+                                <c:if test="#{idiomaControlador.idiomaSeleccionado == idiomaControlador.ingles}">
+                                    <h:commandLink action="#{idiomaControlador.cambiarIdioma('es')}">
+                                        <img src="manage/assets/img/icon_es.png" style="width: 30px; height: 30px;"/>
+                                    </h:commandLink>
+                                </c:if>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </f:view>
+    </h:body>
+</html>
+

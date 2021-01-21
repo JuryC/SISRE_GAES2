@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link href="../manage/css/normalize.css" rel="stylesheet" type="text/css"/>
+        <!-- Bootstrap V4.3 -->
+        <link rel="stylesheet" href="../manage/css/bootstrap.min.css"/>
+
+        <!-- Bootstrap Material Design V4.0 -->
+
+        <link href="../manage/css/bootstrap-material-design.min.css" rel="stylesheet" type="text/css"/>
+
+
+        <link href="../manage/css/all.css" rel="stylesheet" type="text/css"/>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+        <script src="../manage/js/SweetAlert.js" type="text/javascript"></script>
+
+        <link href="../manage/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css"/>
+
+        <script src="https://kit.fontawesome.com/7769f8ac48.js" crossorigin="anonymous"></script>
+
+        <!-- General Styles -->
+        <link href="../manage/css/dash.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <f:view>
+            <script>
+                #{mensajeControlador.mensaje}
+            </script>
+            <main>
+
+
+                <h:form class="form-neon">
+                    <div class="contenedorEje scrollbarStyle">
+                        <div class="text-center">
+                            <h1><h:outputText value="#{actualizar.txt}"/></h1>
+                        </div>
+                        <div class="decorador"></div>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12 col-md-4">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;#{actualizar.hdr8}&lt;/b&gt;" for="idCliente" /><br/>
+                                        <h:outputText value="#{servicioControlador.cita.idCliente.usuario.nombre}" style="font-size: 1.5em;"></h:outputText><br/>
+                                        <h:outputText value="#{servicioControlador.cita.idCliente.usuario.apellido}" style="font-size: 1.5em;"></h:outputText>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;#{actualizar.hdr4}&lt;/b&gt;" for="fechaSolicitud" /><br/>
+                                        <h:outputText id="fechaSolicitud" value="#{servicioControlador.cita.fechaSolicitud}" title="FechaSolicitud" style="font-size: 1.5em;">
+                                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                                        </h:outputText>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;#{actualizar.hdr1}&lt;/b&gt;" for="fechaCita" /><br/>
+                                        <h:outputText id="fechaCita" style="font-size: 1.5em;" value="#{servicioControlador.cita.fechaCita}"  title="Fecha de Cita">
+                                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                                        </h:outputText>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;Valor materiales&lt;/b&gt;" for="horaCita" /><br/>
+                                        <h:outputText id="horaCita" value="$#{servicioControlador.cita.cotizacion}" title="$ Materiales" style="font-size: 1.5em;">
+                                        </h:outputText>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;Valor total servicio&lt;/b&gt;" for="descripcion" /><br/>
+                                        <h:outputText id="descripcion" value="$#{servicioControlador.servicio.total}" title="$ Servicio" style="font-size: 1.5em;"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;#{actualizar.hdr10}&lt;/b&gt;" for="origen" /><br/>
+                                        <h:outputText id="origen" value="#{servicioControlador.cita.origen}" title="Origen" style="font-size: 1.5em;"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;#{actualizar.hdr11}&lt;/b&gt;" for="destino" /><br/>
+                                        <h:outputText id="destino" value="#{servicioControlador.cita.destino}" title="Destino" style="font-size: 1.5em;"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;Tipo de servicio&lt;/b&gt;" for="tserv" /><br/>
+                                        <h:outputText id="tserv" value="#{servicioControlador.tservicio.nombre}" title="Tipo de servicio" style="font-size: 1.5em;"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;Tipo de envio&lt;/b&gt;" for="tenv" /><br/>
+                                        <h:outputText id="tenv" value="#{servicioControlador.envio.tipoEnvio}" title="Tipo de envio" style="font-size: 1.5em;"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;Asignar operario&lt;/b&gt;" for="operarioCargo" /><br/>
+                                        <h:outputText id="operarioCargo" value="#{servicioControlador.cita.operarioCargo.nombre}" style="font-size: 1.5em;"/><br/>
+                                        <h:outputText id="operarioCargo2" value="#{servicioControlador.cita.operarioCargo.apellido}" style="font-size: 1.5em;"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-12">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;Asignar transporte&lt;/b&gt;" for="Transporte" /><br/>
+                                        <h:selectOneMenu class="form-control" id="Transporte" value="#{servicioControlador.idTra}" title="Transporte" >
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItems value="#{transporteControlador.consultarDisponibles()}" var="t" itemValue="#{t.idTransporte}" itemLabel="#{t.marca} #{t.modelo} #{t.color}"/>
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                            </div>
+                            <h:commandButton class="btn btn-raised btn-info btn-sm" value="#{actualizar.txt}" action="#{servicioControlador.actualizar()}"></h:commandButton>
+                        </div>
+                    </div>
+                </h:form>
+
+            </main>
+        </f:view>
+        <script src="../manage/vendor/jquery/jquery.min.js" type="text/javascript"></script>
+
+        <script src="../manage/vendor/jquery/popper.min.js" type="text/javascript"></script>
+
+        <script src="../manage/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/datatables.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/dataTables.buttons.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/jszip.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/pdfmake.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/vfs_fonts.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/buttons.html5.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/exportar_tablas.js" type="text/javascript"></script>
+    </h:body>
+</html>
+

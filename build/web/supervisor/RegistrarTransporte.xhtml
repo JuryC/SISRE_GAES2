@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"></meta>
+        <title>Dashboard Supervisor</title>
+
+
+
+        <link href="../manage/css/normalize.css" rel="stylesheet" type="text/css"/>
+        <!-- Bootstrap V4.3 -->
+        <link rel="stylesheet" href="../manage/css/bootstrap.min.css"/>
+
+        <!-- Bootstrap Material Design V4.0 -->
+
+        <link href="../manage/css/bootstrap-material-design.min.css" rel="stylesheet" type="text/css"/>
+
+
+        <link href="../manage/css/all.css" rel="stylesheet" type="text/css"/>
+
+        <link href="../manage/css/sweetalert2.min.css" rel="stylesheet" type="text/css"/>
+
+        <script src="../manage/js/sweetalert2.min.js" type="text/javascript"></script>
+
+        <link href="../manage/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css"/>
+
+        <script src="https://kit.fontawesome.com/7769f8ac48.js" crossorigin="anonymous"></script>
+
+        <!-- General Styles -->
+        <link href="../manage/css/dash.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <f:view locale="#{idiomaControlador.idiomaSeleccionado}">
+            <script>
+                #{mensajeControlador.mensaje}
+            </script>
+            <h:form class="form-neon" enctype="multipart/form-data">
+                <div class="text-center">
+                    <h1><h:outputText value="#{registrar.txt3}"/></h1>
+                </div>
+                <div class="decorador"></div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 col-md-5">
+                            <div class="form-group">
+                                <h:outputLabel class="bmd-label-floating" value="#{registrar.tran2}" for="marca" />
+                                <h:inputText  class="form-control" id="marca" value="#{transporteControlador.transporte.marca}" title="Marca" required="true" requiredMessage="The Marca field is required."/>
+                                <h:message for="marca" style="color:red;"></h:message>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-5">
+                            <div class="form-group">
+                                <h:outputLabel  class="bmd-label-floating" value="#{registrar.tran3}" for="modelo" />
+                                <h:inputText class="form-control" id="modelo" value="#{transporteControlador.transporte.modelo}" title="Modelo" required="true" requiredMessage="The Modelo field is required."/>
+                                <h:message for="modelo" style="color:red;"></h:message>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <div class="form-group">
+                                <h:outputLabel class="bmd-label-floating" value="#{registrar.tran4}" for="color" />
+                                <h:inputText class="form-control" id="color" value="#{transporteControlador.transporte.color}" title="Color" required="true" requiredMessage="The Color field is required."/>
+                                <h:message for="color" style="color:red;"></h:message>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <div class="form-group">
+                                <h:outputLabel class="bmd-label-floating" value="#{registrar.tran5}" for="idTipoTransporte" />
+                                <h:selectOneMenu class="form-control" id="idTipoTransporte" value="#{transporteControlador.tipotransporte.idTipoTransporte}" title="IdTipoTransporte" required="true" requiredMessage="The IdTipoTransporte field is required.">
+                                    <!-- TODO: update below reference to list of available items-->
+                                    <f:selectItem itemValue="0" itemLabel="Seleccione" noSelectionOption="true"></f:selectItem>
+                                    <f:selectItems value="#{tipoTransporteControlador.consultarTodos()}" var="tipo" itemValue="#{tipo.idTipoTransporte}" itemLabel="#{tipo.nombre}"/>
+                                </h:selectOneMenu>
+                                <h:message for="idTipoTransporte" style="color:red;"></h:message>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn">
+                        <h:commandButton class="btn btn-raised btn-info btn-sm" value="#{registrar.txt3}" action="#{transporteControlador.registrar()}"></h:commandButton>
+                    </div>
+                </div>
+            </h:form>
+
+
+        </f:view>
+
+        <script src="../manage/js/jquery-3.4.1.min.js" type="text/javascript"></script>
+
+        <script src="../manage/js/popper.min.js" type="text/javascript"></script>
+
+        <script src="../manage/js/bootstrap.min.js" type="text/javascript"></script>
+
+        <script src="../manage/js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript"></script>
+
+        <script src="../manage/js/bootstrap-material-design.min.js" type="text/javascript"></script>
+
+        <script>$(document).ready(function () {
+                        $('body').bootstrapMaterialDesign();
+                    });</script>
+
+        <script src="../manage/js/main.js" type="text/javascript"></script>
+    </h:body>
+</html>
+

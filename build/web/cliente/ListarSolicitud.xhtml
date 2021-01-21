@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <!-- Bootstrap V4.3 -->
+        <link rel="stylesheet" href="../manage/css/bootstrap.min.css"/>
+
+        <!-- Bootstrap Material Design V4.0 -->
+
+        <link href="../manage/css/bootstrap-material-design.min.css" rel="stylesheet" type="text/css"/>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+        <script src="../manage/js/SweetAlert.js" type="text/javascript"></script>
+
+        <link href="../manage/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+
+        <link href="../manage/dataTables/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+        <script src="https://kit.fontawesome.com/7769f8ac48.js" crossorigin="anonymous"></script>
+
+        <!-- General Styles -->
+        <link href="../manage/css/dash.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <f:view locale="#{idiomaControlador.idiomaSeleccionado}">
+            <script>
+                #{mensajeControlador.mensaje}
+            </script>
+            <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="manage/dashboard.xhtml">Inicio</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Lista de Solicitud</li>
+                    </ol>
+                </nav>
+            <h:form class="py-5 px-3">
+                <div class="text-center">
+                    <h1><h:outputText  value="#{listaSolicitud.txt}"/></h1>
+                </div>
+                <div class="text-center">
+                    <h:commandLink  action="RegistrarSolicitud.xhtml">
+                        <p:graphicImage value="/manage/assets/icons/registrar.png" style="width: 30px;"></p:graphicImage>
+                    </h:commandLink>
+                </div>
+                <div class="container">
+                    <h:dataTable class="table table-bordered table-hover tabla" style="width: 100%" value="#{solicitudControlador.consultarTodos()}" var="solicitud">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{listaSolicitud.hdr1}"/>
+                            </f:facet>
+                            <h:outputText value="#{solicitud.idSolicitud}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{listaSolicitud.hdr2}"/>
+                            </f:facet>
+                            <h:outputText value="#{solicitud.fechaSolicitud}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{listaSolicitud.hdr4}"/>
+                            </f:facet>
+                            <h:outputText value="#{solicitud.direccionInicio}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{listaSolicitud.hdr5}"/>
+                            </f:facet>
+                            <h:outputText value="#{solicitud.destino}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{listaSolicitud.hdr6}"/>
+                            </f:facet>
+                            <h:outputText value="#{solicitud.fechaResolucion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{listaSolicitud.hdr7}"/>
+                            </f:facet>
+                            <h:outputText value="#{solicitud.admision}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{listaSolicitud.hdr8}"/>
+                            </f:facet>
+                            <h:outputText value="#{solicitud.idServicio.tipoServicio}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{listaSolicitud.hdr10}"/>
+                            </f:facet>
+                            <div class="text-center">
+                                <h:commandLink  action="#{solicitudControlador.eliminar(solicitud)}">
+                                    <p:graphicImage value="/manage/assets/icons/eliminar.png" style="width: 30px;"></p:graphicImage>
+                                </h:commandLink>&nbsp;
+                                <h:commandLink  action="#{solicitudControlador.preActualizar(solicitud)}">
+                                    <p:graphicImage value="/manage/assets/icons/actualizar.png" style="width: 30px;"></p:graphicImage>
+                                </h:commandLink>
+                            </div>
+                        </h:column>
+                    </h:dataTable>
+                </div>
+            </h:form>
+        </f:view>
+
+        <script src="../manage/vendor/jquery/jquery.min.js" type="text/javascript"></script>
+
+        <script src="../manage/vendor/jquery/popper.min.js" type="text/javascript"></script>
+
+        <script src="../manage/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/datatables.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/dataTables.buttons.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/jszip.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/pdfmake.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/vfs_fonts.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/buttons.html5.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/exportar_tablas.js" type="text/javascript"></script>
+
+    </h:body>
+</html>
+

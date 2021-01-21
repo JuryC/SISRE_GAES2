@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <f:view>
+        <h:head>
+
+            <meta charset="UTF-8"></meta>
+            <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"></meta>
+            <title>Multimudanzas Cargo</title>
+
+            <!-- Bootstrap V4.3 -->
+            <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+            <!-- Bootstrap Material Design V4.0 -->
+
+            <link href="css/bootstrap-material-design.min_1.css" rel="stylesheet" type="text/css"/>
+
+            
+            <script src="https://kit.fontawesome.com/7769f8ac48.js" crossorigin="anonymous"></script>
+
+            <script src="js/sweetalert2.min.js" type="text/javascript"></script>
+
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+            <script src="js/SweetAlert.js" type="text/javascript"></script>
+
+            <!-- General Styles -->
+            <link href="css/dashboard.css" rel="stylesheet" type="text/css"/>
+        </h:head>
+        <h:body>
+
+            <header>
+                <div class="navbar" >
+                    <div class="navbar-content" id="menu-nav">
+                        <i class="fas fa-bars" id="menu-btn"></i>
+                        <!--<img src="logo-sistema" alt=""></img>-->
+                        <div class="controler-sesion">
+                           <a href="../supervisor/ActualizarUsuario.xhtml"><i class="fas fa-user-edit"  name="create"></i></a> 
+                        
+                           <a href="../index.xhtml"><i class="fas fa-door-open" name="exit"></i></a>
+
+                        </div>
+                        <h:form>
+                            <c:if test="#{idiomaControlador.idiomaSeleccionado == idiomaControlador.espanol}">
+                                <h:commandLink action="#{idiomaControlador.cambiarIdioma('en')}">
+                                    <img src="assets/img/icon.png" style="width: 30px; height: 30px;"/>
+                                </h:commandLink>
+                            </c:if>
+                            <c:if test="#{idiomaControlador.idiomaSeleccionado == idiomaControlador.ingles}">
+                                <h:commandLink action="#{idiomaControlador.cambiarIdioma('es')}">
+                                    <img src="assets/img/icon_es.png" style="width: 30px; height: 30px;"/>
+                                </h:commandLink>
+                            </c:if>
+                        </h:form>
+                    </div>
+                </div>
+
+            </header>
+            <h:form>
+                <div id="sidebar-container" class="bd-primary">
+                    <div class="user-data">
+                        <img src="#{sesionControlador.usuario.avatar}" alt="" class="circle-user"></img>
+                        <span class="Name">#{sesionControlador.usuario.nombre}</span>
+                        <span class="Name">#{sesionControlador.usuario.apellido}</span>
+                        <div style="color:#fff;">
+                            <c:if test="#{idiomaControlador.idiomaSeleccionado == idiomaControlador.espanol}">
+                                <h:outputText value="#{sesionControlador.usuario.idRol.nombre}" style="color:#FFF;"></h:outputText>
+                            </c:if>
+                            <c:if test="#{idiomaControlador.idiomaSeleccionado == idiomaControlador.ingles}" >
+                                <h:outputText value="#{sesionControlador.usuario.idRol.name}"></h:outputText>
+                            </c:if>
+                        </div>
+                    </div>
+                    <div class="menu-content">
+                        <c:forEach items="#{sesionControlador.rolSeleccionado.rolpermisoList}" var="p">
+                            <c:if test="#{empty p.idPermiso.permisoPadre}">
+                                <div class="permisopadre">
+                                    <a href="#{p.idPermiso.url}">
+                                        <c:if test="#{idiomaControlador.idiomaSeleccionado == idiomaControlador.espanol}">
+                                            #{p.idPermiso.nombre}
+
+                                        </c:if>
+                                        <c:if test="#{idiomaControlador.idiomaSeleccionado == idiomaControlador.ingles}">
+                                            #{p.idPermiso.name}
+                                        </c:if>
+                                    </a>
+                                </div>  
+                                <ul>
+
+                                    <c:forEach items="#{sesionControlador.hijos(p.idPermiso.idPermiso)}" var="sp">
+                                        <c:forEach items="#{sesionControlador.rolSeleccionado.rolpermisoList}" var="op">
+
+                                            <c:if test="#{sp.idPermiso eq op.idPermiso.idPermiso}">
+                                                <li style="list-style: none;">
+                                                    <div class="permisohijo">
+                                                        <a href="#{sp.url}" target="Work">
+                                                            <c:if test="#{idiomaControlador.idiomaSeleccionado == idiomaControlador.espanol}">
+                                                                #{sp.nombre}
+                                                            </c:if>
+                                                            <c:if test="#{idiomaControlador.idiomaSeleccionado == idiomaControlador.ingles}">
+                                                                #{sp.name}
+                                                            </c:if>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                            </c:if>
+                                        </c:forEach>
+                                    </c:forEach>
+                                </ul>
+                            </c:if>
+                        </c:forEach>
+                    </div>
+                </div>
+            </h:form>
+            <main id="contenido">
+                <iframe src="mensaje.xhtml" frameborder="0" name="Work">
+                </iframe>
+            </main>
+
+            <!--=============================================
+            =            Include JavaScript files           =
+            ==============================================-->
+            <script src="../manage/js/dash.js" type="text/javascript"></script>
+            <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+
+        </h:body>
+    </f:view>
+</html>
+

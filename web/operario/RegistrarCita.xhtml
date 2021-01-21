@@ -1,0 +1,251 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"></meta>
+
+
+        <link href="../manage/css/normalize.css" rel="stylesheet" type="text/css"/>
+        <!-- Bootstrap V4.3 -->
+        <link rel="stylesheet" href="../manage/css/bootstrap.min.css"/>
+
+        <!-- Bootstrap Material Design V4.0 -->
+
+        <link href="../manage/css/bootstrap-material-design.min.css" rel="stylesheet" type="text/css"/>
+
+        <link href="../manage/dataTables/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+        <link href="../manage/css/all.css" rel="stylesheet" type="text/css"/>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+        <script src="../manage/js/SweetAlert.js" type="text/javascript"></script>
+
+        <link href="../manage/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css"/>
+
+        <script src="https://kit.fontawesome.com/7769f8ac48.js" crossorigin="anonymous"></script>
+
+        <!-- General Styles -->
+        <link href="../manage/css/dash.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body class="scrollbarStyle">
+        <f:view locale="#{idiomaControlador.idiomaSeleccionado}">
+            <script>
+                #{mensajeControlador.mensaje}
+            </script>
+            <c:if test="#{idiomaControlador.idiomaSeleccionado == idiomaControlador.espanol}">
+                #{citaControlador.lenguaje("es")}
+            </c:if>
+            <c:if test="#{idiomaControlador.idiomaSeleccionado == idiomaControlador.ingles}">
+                #{citaControlador.lenguaje("en")}
+            </c:if>
+            <main>
+                <h:form class="form-neon">
+                    <div class="contenedorEje scrollbarStyle">
+                        <div class="text-center">
+                            <h1><h:outputText value="#{registrar.txt}"/></h1>
+                        </div>
+                        <div class="decorador"></div>
+                        <div class="">
+                            <div class="row">
+                                <div class="col-12 col-md-3">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;#{actualizar.hdr8}&lt;/b&gt;"/><br/>
+                                        <h:outputText value="#{citaControlador.cita.idCliente.usuario.nombre}" style="font-size: 1.5em;"></h:outputText><br/>
+                                        <h:outputText value="#{citaControlador.cita.idCliente.usuario.apellido}" style="font-size: 1.5em;"></h:outputText>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;#{actualizar.hdr4}&lt;/b&gt;" for="fechaSolicitud" /><br/>
+                                        <h:outputText id="fechaSolicitud" value="#{citaControlador.cita.fechaSolicitud}" title="FechaSolicitud" style="font-size: 1.5em;">
+                                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                                        </h:outputText>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;#{actualizar.hdr1}&lt;/b&gt;" for="fechaCita" /><br/>
+                                        <h:outputText id="fechaCita" style="font-size: 1.5em;" value="#{citaControlador.cita.fechaCita}"  title="Fecha de Cita">
+                                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                                        </h:outputText>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;#{actualizar.hdr2}&lt;/b&gt;" for="horaCita" /><br/>
+                                        <h:outputText id="horaCita" value="#{citaControlador.cita.horaCita}" title="HoraCita" style="font-size: 1.5em;">
+                                            <f:convertDateTime pattern="HH:mm" />
+                                        </h:outputText>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;#{actualizar.hdr3}&lt;/b&gt;" for="descripcion" /><br/>
+                                        <h:outputText id="descripcion" value="#{citaControlador.cita.descripcion}" title="Descripcion" style="font-size: 1.5em;"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;#{actualizar.hdr10}&lt;/b&gt;" for="origen" /><br/>
+                                        <h:outputText id="origen" value="#{citaControlador.cita.origen}" title="Origen" style="font-size: 1.5em;"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;#{actualizar.hdr11}&lt;/b&gt;" for="destino" /><br/>
+                                        <h:outputText id="destino" value="#{citaControlador.cita.destino}" title="Destino" style="font-size: 1.5em;"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-12">
+                                    <div class="form-group">
+                                        <h:outputLabel class="bmd-label-floating" escape="false" value="&lt;b&gt;#{registrar.hdr5}&lt;/b&gt;" for="observaciones" />
+                                        <h:inputTextarea class="form-control" value="#{citaControlador.cita.observaciones}" rows="4" cols="30" a:placeholder="Ej: EMPAQUE, EMBALAJE, TRANSPORTE TERRESTRE BOGOTA/CARTAGENA, TRAMITES DE ADUANA EN ORIGEN, TRANSPORTE MARITIMO CARTAGENA/MIAMI (USA)L , TRAMITES DE ADUANA EN DESTINO Y ENTREGA EN SU NUEVA RESIDENCIA en ORLANDO FL." id="observaciones" title="Observaciones" />
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-12 col-md-12">
+                                            <h:dataTable class="tabla table" value="#{inventarioControlador.consultarExistencias()}" var="item">
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="#{registrar.hdr12}"/>
+                                                    </f:facet>
+                                                    <div style="display: flex; width: 100%; flex-direction: row;
+                                                         justify-content: space-between; align-items: center; padding: .5rem;">
+                                                        <h:outputText value="#{item.articulo.nombre}"/><br/>
+                                                    </div>
+                                                </h:column>
+
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="#{registrar.hdr13}"></h:outputText>
+                                                    </f:facet>
+                                                    <h:outputText value="#{registrar.hdr24} #{item.existencia}"/><br/>
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="#{registrar.hdr14}"></h:outputText>
+                                                    </f:facet>
+                                                    <h:outputText value="$#{item.valor}"/>
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="#{registrar.hdr15}"/>
+                                                    </f:facet>
+                                                    <div style="width: 100%; padding: 0.8rem 0; height: 100%; display: flex; flex-direction: row; justify-content: center; align-items: center;">
+                                                        <h:inputText value="#{citaControlador.cant}" a:type="number" a:min="1" a:max="#{item.existencia}" class="form-control"></h:inputText>
+                                                    </div>
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="#{registrar.hdr16}"/>
+                                                    </f:facet>
+                                                    <div style="width: 100%; padding: 0.8rem 0; height: 100%; display: flex; flex-direction: row; justify-content: center; align-items: center;">
+                                                        <h:commandButton style="border: none; outline: none; font-size: 0.8em; width: 1.5rem;
+                                                                         height: 1.5rem; border-radius: 50%;"  styleClass="btn-info" action="#{citaControlador.registrarCM(citaControlador.cita, item.articulo)}" value="+"></h:commandButton>
+                                                    </div>
+                                                </h:column>
+                                            </h:dataTable>
+                                        </div>
+                                        <div class="col-12 col-md-12">
+                                            <h:dataTable class="tabla table" value="#{citaControlador.obtenerMateriales(citaControlador.cita.idCita)}" var="CM">
+                                                <h:column>
+                                                    <f:facet name="header">
+                                                        <h:outputText value="#{registrar.hdr17}"/>
+                                                    </f:facet>
+
+                                                    <div style="display: flex; width: 100%; flex-direction: row;
+                                                         justify-content: space-between; align-items: center; padding: .5rem;">
+                                                        <div>
+                                                            <h:outputText value="#{CM.idMaterial.nombre}"/><br/>
+                                                            <h:outputText value="#{registrar.hdr15} #{CM.cantidadSolicitada}"/><br/>
+                                                            <h:outputText value="#{registrar.hdr25}#{citaControlador.obtenerValorTotalMaterial(citaControlador.cita.idCita, CM.idMaterial.idMaterial)}"/><br/>
+                                                        </div>
+                                                        <h:commandButton style="border: none; outline: none; font-size: 0.8em; width: 1.5rem;
+                                                                         height: 1.5rem; border-radius: 50%;" styleClass="btn-info" action="#{citaControlador.eliminarSolicitudMaterial(CM)}" value="x"></h:commandButton>
+                                                    </div>
+                                                </h:column>
+                                            </h:dataTable>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row col-12 col-md-12" style="margin: 1.5rem 0;">
+                                    <div class="col-12 col-md-3 offset-md-3">
+                                        <h:commandButton class="btn btn-raised btn-info btn-sm" value="#{registrar.hdr18}" action="#{citaControlador.calcularCotizacion(citaControlador.cita.idCita)}"></h:commandButton>
+                                    </div>
+                                    <div class="col-12 col-md-5 offset-md-1">
+                                        <h:outputText value="#{registrar.hdr22}#{citaControlador.cotizacion}"></h:outputText>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-12">
+                                    <h3>#{registrar.hdr19}</h3>
+                                </div>
+                                <div class="col-12 col-md-4 offset-md-1">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;#{registrar.hdr20}&lt;/b&gt;" for="TipoServicio" /><br/>
+                                        <h:selectOneMenu class="form-control" id="TipoServicio" value="#{citaControlador.tipoServicio}" title="Tipo de servicio" >
+                                            <f:selectItems value="#{citaControlador.consultarTipoServ()}" var="ser" itemValue="#{ser.idTipoServicio}" itemLabel="#{ser.nombre} - Valor: $#{ser.valor}"></f:selectItems>
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4 offset-md-1">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;#{registrar.hdr21}&lt;/b&gt;" for="TipoEnvio" /><br/>
+                                        <h:selectOneMenu id="TipoEnvio" class="form-control" value="#{citaControlador.tipoEnvio}" title="Tipo de Envio" >
+                                            <f:selectItems value="#{envioControlador.consultarTodos()}" var="env" itemValue="#{env.idEnvio}" itemLabel="#{env.tipoEnvio} - Valor: $#{env.valor}"></f:selectItems>
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                                <div class="row col-12 col-md-12" style="margin: 1.5rem 0;">
+                                    <div class="col-12 col-md-3 offset-md-3">
+                                        <h:commandButton class="btn btn-raised btn-info btn-sm" value="#{registrar.hdr18}" action="#{citaControlador.calcularTotal(citaControlador.cita.idCita)}"></h:commandButton>
+                                    </div>
+                                    <div class="col-12 col-md-5 offset-md-1">
+                                        <h:outputText value="#{registrar.hdr23} #{citaControlador.totalServicio}"></h:outputText>
+                                    </div>
+                                </div>
+                            </div>
+                            <h:commandButton class="btn btn-raised btn-info btn-sm" value="#{registrar.txt}" action="#{citaControlador.detallesCita(citaControlador.cita.idCita)}"></h:commandButton>
+                        </div>
+                    </div>
+                </h:form>
+            </main>
+        </f:view>
+        <script src="../manage/vendor/jquery/jquery.min.js" type="text/javascript"></script>
+
+        <script src="../manage/vendor/jquery/popper.min.js" type="text/javascript"></script>
+
+        <script src="../manage/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/datatables.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/dataTables.buttons.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/jszip.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/pdfmake.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/vfs_fonts.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/buttons.html5.min.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+                $(document).ready(function () {
+                    $('.tabla').DataTable({
+                        // Para cambiar idioma   
+                        "language": {
+                            "url": "https://cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
+                        }
+                    });
+                });
+        </script>
+
+    </h:body>
+</html>
+

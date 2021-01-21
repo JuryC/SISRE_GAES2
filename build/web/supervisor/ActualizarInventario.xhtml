@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    
+       
+
+
+            <link href="../manage/css/normalize.css" rel="stylesheet" type="text/css"/>
+            <!-- Bootstrap V4.3 -->
+            <link rel="stylesheet" href="../manage/css/bootstrap.min.css"/>
+
+            <!-- Bootstrap Material Design V4.0 -->
+
+            <link href="../manage/css/bootstrap-material-design.min.css" rel="stylesheet" type="text/css"/>
+
+
+            <link href="../manage/css/all.css" rel="stylesheet" type="text/css"/>
+
+            <link href="../manage/css/sweetalert2.min.css" rel="stylesheet" type="text/css"/>
+
+            <script src="../manage/js/sweetalert2.min.js" type="text/javascript"></script>
+
+            <link href="../manage/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css"/>
+
+            <script src="https://kit.fontawesome.com/7769f8ac48.js" crossorigin="anonymous"></script>
+
+            <!-- General Styles -->
+            <link href="../manage/css/dash.css" rel="stylesheet" type="text/css"/>
+            </h:head>
+            <h:body>
+                <f:view>
+                    
+                       
+                        <h:form class="form-neon">
+                            <div class="text-center">
+                                <h1><h:outputText value="Actua"/></h1>
+                            </div>
+                            <div class="decorador"></div>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-12 col-md-5">
+                                        <div class="form-group">
+                                            <h:outputLabel  class="bmd-label-floating" value="IdArticulo:" for="idArticulo" />
+                                            <h:inputText class="form-control" id="idArticulo" value="#{inventarioControlador.inventario.idArticulo}" title="IdArticulo" required="true" requiredMessage="The IdArticulo field is required."/>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-5">
+                                        <div class="form-group">
+                                            <h:outputLabel  class="bmd-label-floating" value="Articulo:" for="articulo" />
+                                            <h:inputText class="form-control" id="articulo" value="#{inventarioControlador.inventario.articulo.nombre}" title="Articulo" required="true" requiredMessage="The Articulo field is required."/>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-5">
+                                        <div class="form-group">
+                                            <h:outputLabel  class="bmd-label-floating" value="Existencia:" for="existencia" />
+                                            <h:inputText class="form-control" id="existencia" value="#{inventarioControlador.inventario.existencia}" title="Existencia" required="true" requiredMessage="The Existencia field is required."/>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-5">
+                                        <div class="form-group">
+                                            <h:outputLabel  class="bmd-label-floating" value="Valor:" for="valor" />
+                                            <h:inputText class="form-control" id="valor" value="#{inventarioControlador.inventario.valor}" title="Valor" required="true" requiredMessage="The Valor field is required."/>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-5">
+                                        <div class="form-group">
+                                            <h:outputLabel  class="bmd-label-floating" value="Estado:" for="estado" />
+                                            <h:inputText class="form-control" id="estado" value="#{inventarioControlador.inventario.estado}" title="Estado" required="true" requiredMessage="The Estado field is required."/>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-5">
+                                        <div class="form-group">
+                                            <h:outputLabel  class="bmd-label-floating" value="IdUsuario:" for="idUsuario" />
+                                            <h:selectOneMenu class="form-control" id="idUsuario" value="#{inventarioControlador.usuario.idUsuario}" title="IdUsuario" required="true" requiredMessage="The IdUsuario field is required.">
+                                                <!-- TODO: update below reference to list of available items-->
+                                                <f:selectItems value="#{usuarioControlador.consultarTodos()}" var="tipo" itemValue="#{tipo.idUsuario}" itemLabel="#{tipo.nombre}"/>
+                                            </h:selectOneMenu>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h:commandButton class="btn btn-raised btn-info btn-sm" value="Actualizar Inventario" action="#{inventarioControlador.actualizar()}"></h:commandButton>
+                            </div>
+                        </h:form>
+                   
+                </f:view>
+                <script src="../manage/js/jquery-3.4.1.min.js" type="text/javascript"></script>
+
+                <script src="../manage/js/popper.min.js" type="text/javascript"></script>
+
+                <script src="../manage/js/bootstrap.min.js" type="text/javascript"></script>
+
+                <script src="../manage/js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript"></script>
+
+                <script src="../manage/js/bootstrap-material-design.min.js" type="text/javascript"></script>
+
+                <script>$(document).ready(function () {
+                        $('body').bootstrapMaterialDesign();
+                    });</script>
+
+                <script src="../manage/js/main.js" type="text/javascript"></script>
+            </h:body>
+            </html>
+

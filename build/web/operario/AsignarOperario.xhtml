@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Facelet Title</title>
+        <link href="../manage/css/normalize.css" rel="stylesheet" type="text/css"/>
+        <!-- Bootstrap V4.3 -->
+        <link rel="stylesheet" href="../manage/css/bootstrap.min.css"/>
+
+        <!-- Bootstrap Material Design V4.0 -->
+
+        <link href="../manage/css/bootstrap-material-design.min.css" rel="stylesheet" type="text/css"/>
+
+
+        <link href="../manage/css/all.css" rel="stylesheet" type="text/css"/>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+        <script src="../manage/js/SweetAlert.js" type="text/javascript"></script>
+
+        <link href="../manage/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css"/>
+
+        <script src="https://kit.fontawesome.com/7769f8ac48.js" crossorigin="anonymous"></script>
+
+        <!-- General Styles -->
+        <link href="../manage/css/dash.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <f:view locale="#{idiomaControlador.idiomaSeleccionado}">
+            <script>
+                #{mensajeControlador.mensaje}
+            </script>
+            
+
+                <h:form class="form-neon">
+                    <div class="contenedorEje scrollbarStyle">
+                        <div class="text-center">
+                            <h1><h:outputText value="#{actualizar.txt}"/></h1>
+                        </div>
+                        <div class="decorador"></div>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12 col-md-3">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;#{actualizar.hdr8}&lt;/b&gt;" for="idCliente" /><br/>
+                                        <h:outputText value="#{citaControlador.cita.idCliente.usuario.nombre}" style="font-size: 1.5em;"></h:outputText><br/>
+                                        <h:outputText value="#{citaControlador.cita.idCliente.usuario.apellido}" style="font-size: 1.5em;"></h:outputText>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;#{actualizar.hdr4}&lt;/b&gt;" for="fechaSolicitud" /><br/>
+                                        <h:outputText a:type="date" id="fechaSolicitud" value="#{citaControlador.cita.fechaSolicitud}" title="FechaSolicitud" style="font-size: 1.5em;">
+                                            <f:convertDateTime pattern="yyyy-MM-dd" />
+                                        </h:outputText>
+                                        <h:message for="fechaSolicitud" style="color:red;">
+                                    </h:message>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;#{actualizar.hdr1}&lt;/b&gt;" for="fechaCita" /><br/>
+                                        <h:outputText a:type="date" id="fechaCita" style="font-size: 1.5em;" value="#{citaControlador.cita.fechaCita}"  title="Fecha de Cita">
+                                            <f:convertDateTime pattern="yyyy-MM-dd" />
+                                        </h:outputText>
+                                        <h:message for="fechaCita" style="color:red;">
+                                    </h:message>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;#{actualizar.hdr2}&lt;/b&gt;" for="horaCita" /><br/>
+                                        <h:outputText id="horaCita" value="#{citaControlador.cita.horaCita}" title="HoraCita" style="font-size: 1.5em;">
+                                            <f:convertDateTime pattern="HH:mm:ss" />
+                                        </h:outputText>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;#{actualizar.hdr3}&lt;/b&gt;" for="descripcion" /><br/>
+                                        <h:outputText id="descripcion" value="#{citaControlador.cita.descripcion}" title="Descripcion" style="font-size: 1.5em;"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;#{actualizar.hdr10}&lt;/b&gt;" for="origen" /><br/>
+                                        <h:outputText id="origen" value="#{citaControlador.cita.origen}" title="Origen" style="font-size: 1.5em;"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;#{actualizar.hdr11}&lt;/b&gt;" for="destino" /><br/>
+                                        <h:outputText id="destino" value="#{citaControlador.cita.destino}" title="Destino" style="font-size: 1.5em;"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-12">
+                                    <div class="form-group">
+                                        <h:outputLabel escape="false" value="&lt;b&gt;#{actualizar.hdr13}&lt;/b&gt;" for="operarioCargo" /><br/>
+                                        <h:selectOneMenu class="form-control" id="operarioCargo" value="#{citaControlador.usuario.idUsuario}" title="OperarioCargo" >
+                                            <!-- TODO: update below reference to list of available items-->
+                                            <f:selectItems value="#{citaControlador.operariosDisponibles}" var="tipo" itemValue="#{tipo.idUsuario}" itemLabel="#{tipo.nombre} #{tipo.apellido} | Citas actuales: #{citaControlador.cantidadCitas(tipo.idUsuario)}"/>
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+                            </div>
+                            <h:commandButton class="btn btn-raised btn-info btn-sm" value="#{actualizar.txt}" action="#{citaControlador.asignarOperario()}"></h:commandButton>
+                        </div>
+                    </div>
+                </h:form>
+           
+        </f:view>
+        <script src="../manage/js/jquery-3.4.1.min.js" type="text/javascript"></script>
+
+        <script src="../manage/js/popper.min.js" type="text/javascript"></script>
+
+        <script src="../manage/js/bootstrap.min.js" type="text/javascript"></script>
+
+        <script src="../manage/js/jquery.mCustomScrollbar.concat.min.js" type="text/javascript"></script>
+
+        <script src="../manage/js/bootstrap-material-design.min.js" type="text/javascript"></script>
+
+        <script>$(document).ready(function () {
+                    $('body').bootstrapMaterialDesign();
+                });</script>
+
+        <script src="../manage/js/main.js" type="text/javascript"></script>
+    </h:body>
+</html>
+
+
+

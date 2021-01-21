@@ -1,0 +1,11 @@
+.banner-index{
+    background-image: url(../assets/img/mudanza.jpg);
+    background-size: 100% 100%;
+    background-color: gray;
+    background-blend-mode: soft-light;
+}
+.imgQS{
+    width: 20px;
+    height: 20px;
+}
+

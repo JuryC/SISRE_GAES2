@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"></meta>
+        <title>Dashboard Supervisor</title>
+
+        <!-- Bootstrap V4.3 -->
+        <link rel="stylesheet" href="../manage/css/bootstrap.min.css"/>
+
+        <!-- Bootstrap Material Design V4.0 -->
+
+        <link href="../manage/css/bootstrap-material-design.min.css" rel="stylesheet" type="text/css"/>
+
+
+        <link href="../manage/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+
+        <link href="../manage/dataTables/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+        <script src="https://kit.fontawesome.com/7769f8ac48.js" crossorigin="anonymous"></script>
+
+        <!-- General Styles -->
+        <link href="../manage/css/dash.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <f:view locale="#{idiomaControlador.idiomaSeleccionado}">
+            
+                <h:form class="py-5 px-3">
+                    <div class="text-center">
+                        <h1><h:outputText  value="#{lista.txt}"/></h1>
+                    </div>
+                    <div class="text-center">
+                        <h:commandLink action="RegistrarCita.xhtml">
+                            <p:graphicImage value="/manage/assets/icons/registrar.png" style="width: 30px;"></p:graphicImage>
+                        </h:commandLink>
+                    </div>
+                    <h:dataTable  class="table table-bordered table-hover tabla" style="width: 95%" value="#{citaControlador.consultarCitaUsuario(sesionControlador.usuario.idUsuario)}" var="cita">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lista.hdr1}"/>
+                            </f:facet>
+                            <h:outputText value="#{citaControlador.convertirf(cita.fechaCita)}">
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lista.hdr2}"/>
+                            </f:facet>
+                            <h:outputText value="#{citaControlador.convertir(cita.horaCita)}">
+                               
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lista.hdr14}"/>
+                            </f:facet>
+                            <h:outputText escape="false" value="&lt;b&gt;#{lista.hdr10}&lt;/b&gt;: #{cita.origen}"></h:outputText><br/>
+                            <h:outputText escape="false" value="&lt;b&gt;#{lista.hdr11}&lt;/b&gt;: #{cita.destino}"></h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{lista.hdr3}"/>
+                            </f:facet>
+                            <h:outputText value="#{cita.descripcion}"></h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value=""/>
+                            </f:facet>
+                            <div class="text-center">
+                                <h:commandLink  action="#{citaControlador.eliminar(cita)}">
+                                    <p:graphicImage value="/manage/assets/icons/eliminar.png" style="width: 15px;"></p:graphicImage>
+                                </h:commandLink>&nbsp;
+                                <h:commandLink  action="#{citaControlador.preActualizar(cita)}">
+                                    <p:graphicImage value="/manage/assets/icons/actualizar.png" style="width: 15px;"></p:graphicImage>
+                                </h:commandLink>
+                            </div>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            
+        </f:view>
+
+        <script src="../manage/vendor/jquery/jquery.min.js" type="text/javascript"></script>
+
+        <script src="../manage/vendor/jquery/popper.min.js" type="text/javascript"></script>
+
+        <script src="../manage/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/datatables.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/dataTables.buttons.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/jszip.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/pdfmake.min.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/vfs_fonts.js" type="text/javascript"></script>
+
+        <script src="../manage/dataTables/buttons.html5.min.js" type="text/javascript"></script>
+
+         <c:if test="#{idiomaControlador.idiomaSeleccionado == idiomaControlador.espanol}">
+            <script src="../manage/dataTables/exportar_tablas.js" type="text/javascript"></script>
+        </c:if>
+        <c:if test="#{idiomaControlador.idiomaSeleccionado == idiomaControlador.ingles}">
+            <script src="../manage/dataTables/exportar_tablas_1.js" type="text/javascript"></script>
+        </c:if>
+    </h:body>
+</html>
+
